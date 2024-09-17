@@ -122,19 +122,19 @@ int main(void)
 	  voltageVMAX = -999999;
 	  voltageVMIN = 999999;
 
-	for (i = 0; i < 25000; i++) {
+	for (i = 0; i < 1000; i++) {
 
-		uint32_t sumRawCurrentInput = 0;
-		uint32_t sumRawVoltageInput = 0;
+		//uint32_t sumRawCurrentInput = 0;
+		//uint32_t sumRawVoltageInput = 0;
 
-		for (i = 0; i < 10; i++) {
-			HAL_ADC_Start(&hadc1);
-			sumRawCurrentInput += HAL_ADC_GetValue(&hadc1);
-		}
+		//for (i = 0; i < 10; i++) {
+		//	HAL_ADC_Start(&hadc1);
+		//	sumRawCurrentInput += HAL_ADC_GetValue(&hadc1);
+		//}
 
 	//Corrente
-		//HAL_ADC_Start(&hadc1);
-		rawCurrentInput = sumRawCurrentInput / 10;    //HAL_ADC_GetValue(&hadc1);
+		HAL_ADC_Start(&hadc1);
+		rawCurrentInput = HAL_ADC_GetValue(&hadc1);
 		currentV = ((double)rawCurrentInput/4096)*3.3;
 
 		if (currentVMAX < currentV) {
@@ -154,14 +154,14 @@ int main(void)
 		}
 
 	//Tensão
-		for (i = 0; i < 10; i++) {
-			HAL_ADC_Start(&hadc2);
-			sumRawVoltageInput += HAL_ADC_GetValue(&hadc2);
-		}
+		//for (i = 0; i < 10; i++) {
+		//	HAL_ADC_Start(&hadc2);
+		//	sumRawVoltageInput += HAL_ADC_GetValue(&hadc2);
+		//}
 
-		//HAL_ADC_Start(&hadc2);
-		//rawVoltageInput = HAL_ADC_GetValue(&hadc2);
-		rawVoltageInput = sumRawVoltageInput / 10;
+		HAL_ADC_Start(&hadc2);
+		rawVoltageInput = HAL_ADC_GetValue(&hadc2);
+		//rawVoltageInput = sumRawVoltageInput / 10;
 		voltageV = ((double)rawVoltageInput/4096)*3.3;
 
 		if (voltageVMAX < voltageV) {

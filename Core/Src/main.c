@@ -73,7 +73,7 @@ double previousCurrentOutput = 0;
 double previousPowerOutput = 0;
 
 int indx = 0;
-short onOff = 0;
+short onOff = 1;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -145,9 +145,9 @@ int main(void)
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);
   HAL_Delay(12500);
 
-//  sprintf(TxData, "ATE0\r\n");
-//  	    HAL_UART_Transmit(&huart1, (uint8_t*)TxData, strlen(TxData), 1000);
-//		HAL_Delay(2000);
+  sprintf(TxData, "ATE0\r\n");
+  	    HAL_UART_Transmit(&huart1, (uint8_t*)TxData, strlen(TxData), 1000);
+		HAL_Delay(2000);
   sprintf(TxData, "AT+GSMBUSY=1\r\n");
       	HAL_UART_Transmit(&huart1, (uint8_t*)TxData, strlen(TxData), 1000);
       	HAL_Delay(2000);
@@ -229,8 +229,8 @@ int main(void)
 	currentVRMS = (currentVMAX - currentVMIN) / (2 * sqrt(2));
 	voltageVRMS = (voltageVMAX - voltageVMIN) / (2 * sqrt(2));
 
-	currentOutput = previousCurrentOutput + 0.1 * ((currentVRMS * 3.565592)-previousCurrentOutput);      //currentVRMS * (4.020);
-	voltageOutput = previousVoltageOutput + 0.1 * ((voltageVRMS * 705.555555)-previousVoltageOutput);
+	currentOutput = previousCurrentOutput + 0.1 * ((currentVRMS * 27)-previousCurrentOutput);      //currentVRMS * (4.020);
+	voltageOutput = previousVoltageOutput + 0.1 * ((voltageVRMS * 1209.52381)-previousVoltageOutput);
 	powerOutput = previousPowerOutput + 0.1 * ((voltageOutput * currentOutput)-previousPowerOutput);
 
 	previousVoltageOutput = voltageOutput;

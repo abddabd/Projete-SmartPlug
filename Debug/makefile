@@ -56,7 +56,7 @@ main-build: Projete\ 2024\ v1.elf secondary-outputs
 
 # Tool invocations
 Projete\ 2024\ v1.elf: $(OBJS) $(USER_OBJS) C:\Users\Guilherme\STM32CubeIDE\workspace_1.5.1\Projete\ 2024\ v1\STM32F103C8TX_FLASH.ld
-	arm-none-eabi-gcc -o "Projete 2024 v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Guilherme\STM32CubeIDE\workspace_1.5.1\Projete 2024 v1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Projete 2024 v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+	arm-none-eabi-gcc -o "Projete 2024 v1.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\Guilherme\STM32CubeIDE\workspace_1.5.1\Projete 2024 v1\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Projete 2024 v1.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -136,6 +136,7 @@ int main(void)
   MX_ADC2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, onOff);
   ST7789_Init();
 
   ST7789_Fill_Color(WHITE);
@@ -174,7 +175,6 @@ int main(void)
         HAL_UART_Transmit(&huart1, (uint8_t*)TxData, strlen(TxData), 1000);
         HAL_Delay(10000);
 
-  //ST7789_Test();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -188,7 +188,7 @@ int main(void)
 	  voltageVMIN = 999999;
 	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, onOff);
 
-	for (i = 0; i < 100; i++) {
+	for (i = 0; i < 400; i++) {
 
 	//Corrente
 		HAL_ADC_Start(&hadc1);
@@ -229,9 +229,9 @@ int main(void)
 	currentVRMS = (currentVMAX - currentVMIN) / (2 * sqrt(2));
 	voltageVRMS = (voltageVMAX - voltageVMIN) / (2 * sqrt(2));
 
-	currentOutput = previousCurrentOutput + 0.1 * ((currentVRMS * 27)-previousCurrentOutput);      //currentVRMS * (4.020);
-	voltageOutput = previousVoltageOutput + 0.1 * ((voltageVRMS * 1209.52381)-previousVoltageOutput);
-	powerOutput = previousPowerOutput + 0.1 * ((voltageOutput * currentOutput)-previousPowerOutput);
+	currentOutput = previousCurrentOutput + 0.97 * ((currentVRMS * 3.94)-previousCurrentOutput);      //currentVRMS * (4.020);
+	voltageOutput = previousVoltageOutput + 0.97 * ((voltageVRMS * 668.420)-previousVoltageOutput);
+	powerOutput = previousPowerOutput + 0.97 * ((voltageOutput * currentOutput)-previousPowerOutput);
 
 	previousVoltageOutput = voltageOutput;
 	previousCurrentOutput = currentOutput;

@@ -59,15 +59,15 @@ double currentV;
 double currentVRMS;
 double currentVMAX;
 double currentVMIN;
-double currentOutput;
+double currentOutput = 0;
 double currentOutputMilis;
 uint32_t rawVoltageInput; //Pino A1
 double voltageV;
 double voltageVMAX;
 double voltageVMIN;
 double voltageVRMS;
-double voltageOutput;
-double powerOutput;
+double voltageOutput = 0;
+double powerOutput = 0;
 double previousVoltageOutput = 0;
 double previousCurrentOutput = 0;
 double previousPowerOutput = 0;
@@ -87,6 +87,8 @@ static void MX_USART1_UART_Init(void);
 double sqrt(double);
 int sprintf(char *str, const char *format, ...);
 int	snprintf (char *__restrict, size_t, const char *__restrict, ...);
+void Communicate(void);
+void relay_control(short);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -136,7 +138,8 @@ int main(void)
   MX_ADC2_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, onOff);
+  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, onOff);
+  relay_control(onOff);
   ST7789_Init();
 
   ST7789_Fill_Color(WHITE);
@@ -186,7 +189,8 @@ int main(void)
 	  currentVMIN = 999999;
 	  voltageVMAX = -999999;
 	  voltageVMIN = 999999;
-	  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, onOff);
+	 // HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, onOff);
+	  relay_control(onOff);
 
 	for (i = 0; i < 400; i++) {
 
@@ -241,15 +245,15 @@ int main(void)
 
 	snprintf(volString, 50, "%1f", voltageOutput);
 	sprintf(temString, "Tensao:%sV", volString);
-	ST7789_WriteString(0, 129, temString, Font_11x18, WHITE, BLACK);
+	ST7789_WriteString(0, 129, temString, Font_11x18, BLACK, WHITE);
 
 	snprintf(curString, 50, "%1f", currentOutputMilis);
 	sprintf(temString, "Corrente:%smA", curString);
-	ST7789_WriteString(0, 111, temString, Font_11x18, WHITE, BLACK);
+	ST7789_WriteString(0, 111, temString, Font_11x18, BLACK, WHITE);
 
 	snprintf(powString, 50, "%1f", powerOutput);
 	sprintf(temString, "Potencia:%sW", powString);
-	ST7789_WriteString(0, 93, temString, Font_11x18, WHITE, BLACK);
+	ST7789_WriteString(0, 93, temString, Font_11x18, BLACK, WHITE);
 
 	Communicate();
 
@@ -484,8 +488,8 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, ST7789_DC_Pin|ST7789_RST_Pin|GPIO_PIN_3, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : ST7789_CS_Pin PA8 PA11 PA12 */
-  GPIO_InitStruct.Pin = ST7789_CS_Pin|GPIO_PIN_8|GPIO_PIN_11|GPIO_PIN_12;
+  /*Configure GPIO pins : ST7789_CS_Pin PA11 PA12 */
+  GPIO_InitStruct.Pin = ST7789_CS_Pin|GPIO_PIN_11|GPIO_PIN_12;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -498,6 +502,13 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : PA8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_OD;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
   /*Configure GPIO pin : PB3 */
   GPIO_InitStruct.Pin = GPIO_PIN_3;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -508,6 +519,22 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+
+void relay_control(short state)
+{
+	if(state==0)
+	{
+		//turn on
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+	}
+	else if(state==1)
+	{
+		//turn off
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+	}
+}
+
+
 void Communicate() {
 
 	char *token;

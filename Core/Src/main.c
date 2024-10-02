@@ -95,12 +95,11 @@ void relay_control(short);
 /* USER CODE BEGIN 0 */
 char TxData[200];
 char incomingData[250];
-char temp[2];
 char RxData[300];
-char volString[30];
-char curString[30];
-char powString[30];
-char temString[30];
+char volString[50];
+char curString[50];
+char powString[50];
+char temString[100];
 
 char ledString[17];
 /* USER CODE END 0 */

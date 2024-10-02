@@ -88,25 +88,21 @@ rawVoltageInput     0x4               Core/Src/main.o
 errno               0x4               c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-reent.o)
 hadc2               0x30              Core/Src/main.o
 incomingData        0xfa              Core/Src/main.o
-voltageOutput       0x8               Core/Src/main.o
 uwTick              0x4               Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
-temp                0x2               Core/Src/main.o
 pFlash              0x20              Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_flash.o
-powString           0x1e              Core/Src/main.o
+powString           0x32              Core/Src/main.o
 hadc1               0x30              Core/Src/main.o
 voltageVMAX         0x8               Core/Src/main.o
 i                   0x4               Core/Src/main.o
-volString           0x1e              Core/Src/main.o
+volString           0x32              Core/Src/main.o
 currentVMAX         0x8               Core/Src/main.o
 currentV            0x8               Core/Src/main.o
 huart1              0x44              Core/Src/main.o
 voltageV            0x8               Core/Src/main.o
 currentOutputMilis  0x8               Core/Src/main.o
-powerOutput         0x8               Core/Src/main.o
-curString           0x1e              Core/Src/main.o
+curString           0x32              Core/Src/main.o
 TxData              0xc8              Core/Src/main.o
 currentVRMS         0x8               Core/Src/main.o
-currentOutput       0x8               Core/Src/main.o
 ledString           0x11              Core/Src/main.o
 voltageVRMS         0x8               Core/Src/main.o
 hspi1               0x58              Core/Src/main.o
@@ -114,7 +110,7 @@ RxData              0x12c             Core/Src/main.o
 rawCurrentInput     0x4               Core/Src/main.o
 voltageVMIN         0x8               Core/Src/main.o
 currentVMIN         0x8               Core/Src/main.o
-temString           0x1e              Core/Src/main.o
+temString           0x64              Core/Src/main.o
 
 Discarded input sections
 
@@ -3573,80 +3569,85 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
  .igot.plt      0x00000000200001e8        0x0 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
                 0x00000000200001e8                . = ALIGN (0x4)
 
-.bss            0x00000000200001e8      0x550 load address 0x0000000008007720
+.bss            0x00000000200001e8      0x5cc load address 0x0000000008007720
                 0x00000000200001e8                _sbss = .
                 0x00000000200001e8                __bss_start__ = _sbss
  *(.bss)
  .bss           0x00000000200001e8       0x1c c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtbegin.o
  *(.bss*)
  *fill*         0x0000000020000204        0x4 
- .bss.previousVoltageOutput
+ .bss.currentOutput
                 0x0000000020000208        0x8 Core/Src/main.o
-                0x0000000020000208                previousVoltageOutput
- .bss.previousCurrentOutput
+                0x0000000020000208                currentOutput
+ .bss.voltageOutput
                 0x0000000020000210        0x8 Core/Src/main.o
-                0x0000000020000210                previousCurrentOutput
- .bss.previousPowerOutput
+                0x0000000020000210                voltageOutput
+ .bss.powerOutput
                 0x0000000020000218        0x8 Core/Src/main.o
-                0x0000000020000218                previousPowerOutput
+                0x0000000020000218                powerOutput
+ .bss.previousVoltageOutput
+                0x0000000020000220        0x8 Core/Src/main.o
+                0x0000000020000220                previousVoltageOutput
+ .bss.previousCurrentOutput
+                0x0000000020000228        0x8 Core/Src/main.o
+                0x0000000020000228                previousCurrentOutput
+ .bss.previousPowerOutput
+                0x0000000020000230        0x8 Core/Src/main.o
+                0x0000000020000230                previousPowerOutput
  .bss.__sbrk_heap_end
-                0x0000000020000220        0x4 Core/Src/sysmem.o
+                0x0000000020000238        0x4 Core/Src/sysmem.o
  .bss.__malloc_free_list
-                0x0000000020000224        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000020000224                __malloc_free_list
+                0x000000002000023c        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-mallocr.o)
+                0x000000002000023c                __malloc_free_list
  .bss.__malloc_sbrk_start
-                0x0000000020000228        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-mallocr.o)
-                0x0000000020000228                __malloc_sbrk_start
+                0x0000000020000240        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-nano-mallocr.o)
+                0x0000000020000240                __malloc_sbrk_start
  *(COMMON)
- *fill*         0x000000002000022c        0x4 
- COMMON         0x0000000020000230      0x4fe Core/Src/main.o
-                0x0000000020000230                rawVoltageInput
-                0x0000000020000234                hadc2
-                0x0000000020000264                incomingData
-                0x0000000020000360                voltageOutput
-                0x0000000020000368                temp
-                0x000000002000036c                powString
-                0x000000002000038c                hadc1
-                0x00000000200003c0                voltageVMAX
-                0x00000000200003c8                i
-                0x00000000200003cc                volString
-                0x00000000200003f0                currentVMAX
-                0x00000000200003f8                currentV
-                0x0000000020000400                huart1
-                0x0000000020000448                voltageV
-                0x0000000020000450                currentOutputMilis
-                0x0000000020000458                powerOutput
-                0x0000000020000460                curString
-                0x0000000020000480                TxData
-                0x0000000020000548                currentVRMS
-                0x0000000020000550                currentOutput
-                0x0000000020000558                ledString
-                0x0000000020000570                voltageVRMS
-                0x0000000020000578                hspi1
-                0x00000000200005d0                RxData
-                0x00000000200006fc                rawCurrentInput
-                0x0000000020000700                voltageVMIN
-                0x0000000020000708                currentVMIN
-                0x0000000020000710                temString
- *fill*         0x000000002000072e        0x2 
- COMMON         0x0000000020000730        0x4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
-                0x0000000020000730                uwTick
- COMMON         0x0000000020000734        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-reent.o)
-                0x0000000020000734                errno
-                0x0000000020000738                . = ALIGN (0x4)
-                0x0000000020000738                _ebss = .
-                0x0000000020000738                __bss_end__ = _ebss
+ *fill*         0x0000000020000244        0x4 
+ COMMON         0x0000000020000248      0x564 Core/Src/main.o
+                0x0000000020000248                rawVoltageInput
+                0x000000002000024c                hadc2
+                0x000000002000027c                incomingData
+                0x0000000020000378                powString
+                0x00000000200003ac                hadc1
+                0x00000000200003e0                voltageVMAX
+                0x00000000200003e8                i
+                0x00000000200003ec                volString
+                0x0000000020000420                currentVMAX
+                0x0000000020000428                currentV
+                0x0000000020000430                huart1
+                0x0000000020000478                voltageV
+                0x0000000020000480                currentOutputMilis
+                0x0000000020000488                curString
+                0x00000000200004bc                TxData
+                0x0000000020000588                currentVRMS
+                0x0000000020000590                ledString
+                0x00000000200005a8                voltageVRMS
+                0x00000000200005b0                hspi1
+                0x0000000020000608                RxData
+                0x0000000020000734                rawCurrentInput
+                0x0000000020000738                voltageVMIN
+                0x0000000020000740                currentVMIN
+                0x0000000020000748                temString
+ COMMON         0x00000000200007ac        0x4 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+                0x00000000200007ac                uwTick
+ COMMON         0x00000000200007b0        0x4 c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/../../../../arm-none-eabi/lib/thumb/v7-m\libc_nano.a(lib_a-reent.o)
+                0x00000000200007b0                errno
+                0x00000000200007b4                . = ALIGN (0x4)
+                0x00000000200007b4                _ebss = .
+                0x00000000200007b4                __bss_end__ = _ebss
 
 ._user_heap_stack
-                0x0000000020000738      0x600 load address 0x0000000008007720
-                0x0000000020000738                . = ALIGN (0x8)
+                0x00000000200007b4      0x604 load address 0x0000000008007720
+                0x00000000200007b8                . = ALIGN (0x8)
+ *fill*         0x00000000200007b4        0x4 
                 [!provide]                        PROVIDE (end = .)
-                0x0000000020000738                PROVIDE (_end = .)
-                0x0000000020000938                . = (. + _Min_Heap_Size)
- *fill*         0x0000000020000738      0x200 
-                0x0000000020000d38                . = (. + _Min_Stack_Size)
- *fill*         0x0000000020000938      0x400 
-                0x0000000020000d38                . = ALIGN (0x8)
+                0x00000000200007b8                PROVIDE (_end = .)
+                0x00000000200009b8                . = (. + _Min_Heap_Size)
+ *fill*         0x00000000200007b8      0x200 
+                0x0000000020000db8                . = (. + _Min_Stack_Size)
+ *fill*         0x00000000200009b8      0x400 
+                0x0000000020000db8                . = ALIGN (0x8)
 
 /DISCARD/
  libc.a(*)
@@ -3772,23 +3773,23 @@ LOAD c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.exte
                 0x00000000000009b0       0x1d c:/st/stm32cubeide_1.5.1/stm32cubeide/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.7-2018-q2-update.win32_1.5.0.202011040924/tools/bin/../lib/gcc/arm-none-eabi/7.3.1/thumb/v7-m/crtn.o
 OUTPUT(Projete 2024 v1.elf elf32-littlearm)
 
-.debug_info     0x0000000000000000     0xa50e
+.debug_info     0x0000000000000000     0xa4fd
  .debug_info    0x0000000000000000      0x1cb Core/Src/ST7789/ST7789/fonts.o
  .debug_info    0x00000000000001cb     0x10f1 Core/Src/ST7789/ST7789/st7789.o
- .debug_info    0x00000000000012bc     0x19ee Core/Src/main.o
- .debug_info    0x0000000000002caa      0xded Core/Src/stm32f1xx_hal_msp.o
- .debug_info    0x0000000000003a97      0x20a Core/Src/stm32f1xx_it.o
- .debug_info    0x0000000000003ca1      0x985 Core/Src/sysmem.o
- .debug_info    0x0000000000004626      0x29a Core/Src/system_stm32f1xx.o
- .debug_info    0x00000000000048c0       0x22 Core/Startup/startup_stm32f103c8tx.o
- .debug_info    0x00000000000048e2      0x714 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
- .debug_info    0x0000000000004ff6      0xc6c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o
- .debug_info    0x0000000000005c62      0xb51 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
- .debug_info    0x00000000000067b3      0x69b Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
- .debug_info    0x0000000000006e4e      0x80f Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
- .debug_info    0x000000000000765d      0x444 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o
- .debug_info    0x0000000000007aa1     0x1581 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o
- .debug_info    0x0000000000009022     0x14ec Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
+ .debug_info    0x00000000000012bc     0x19dd Core/Src/main.o
+ .debug_info    0x0000000000002c99      0xded Core/Src/stm32f1xx_hal_msp.o
+ .debug_info    0x0000000000003a86      0x20a Core/Src/stm32f1xx_it.o
+ .debug_info    0x0000000000003c90      0x985 Core/Src/sysmem.o
+ .debug_info    0x0000000000004615      0x29a Core/Src/system_stm32f1xx.o
+ .debug_info    0x00000000000048af       0x22 Core/Startup/startup_stm32f103c8tx.o
+ .debug_info    0x00000000000048d1      0x714 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_info    0x0000000000004fe5      0xc6c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o
+ .debug_info    0x0000000000005c51      0xb51 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_info    0x00000000000067a2      0x69b Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_info    0x0000000000006e3d      0x80f Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
+ .debug_info    0x000000000000764c      0x444 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc_ex.o
+ .debug_info    0x0000000000007a90     0x1581 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_spi.o
+ .debug_info    0x0000000000009011     0x14ec Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.o
 
 .debug_abbrev   0x0000000000000000     0x1b66
  .debug_abbrev  0x0000000000000000       0xaf Core/Src/ST7789/ST7789/fonts.o
@@ -3952,25 +3953,25 @@ OUTPUT(Projete 2024 v1.elf elf32-littlearm)
                                        0x3c74 (size before relaxing)
  .debug_str     0x0000000000003afe    0x7f4e4 Core/Src/ST7789/ST7789/st7789.o
                                       0x83359 (size before relaxing)
- .debug_str     0x0000000000082fe2     0x48c6 Core/Src/main.o
-                                      0x87a52 (size before relaxing)
- .debug_str     0x00000000000878a8       0xd2 Core/Src/stm32f1xx_hal_msp.o
+ .debug_str     0x0000000000082fe2     0x48c1 Core/Src/main.o
+                                      0x87a4d (size before relaxing)
+ .debug_str     0x00000000000878a3       0xd2 Core/Src/stm32f1xx_hal_msp.o
                                       0x82d7a (size before relaxing)
- .debug_str     0x000000000008797a       0xbd Core/Src/stm32f1xx_it.o
+ .debug_str     0x0000000000087975       0xbd Core/Src/stm32f1xx_it.o
                                       0x8266b (size before relaxing)
- .debug_str     0x0000000000087a37      0x4e9 Core/Src/sysmem.o
+ .debug_str     0x0000000000087a32      0x4e9 Core/Src/sysmem.o
                                        0x5f4c (size before relaxing)
- .debug_str     0x0000000000087f20       0x52 Core/Src/system_stm32f1xx.o
+ .debug_str     0x0000000000087f1b       0x52 Core/Src/system_stm32f1xx.o
                                       0x825a0 (size before relaxing)
- .debug_str     0x0000000000087f72       0x36 Core/Startup/startup_stm32f103c8tx.o
+ .debug_str     0x0000000000087f6d       0x36 Core/Startup/startup_stm32f103c8tx.o
                                          0x7c (size before relaxing)
- .debug_str     0x0000000000087fa8      0x55e Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
+ .debug_str     0x0000000000087fa3      0x55e Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal.o
                                       0x82c31 (size before relaxing)
- .debug_str     0x0000000000088506      0x35c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o
+ .debug_str     0x0000000000088501      0x35c Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_adc.o
                                       0x82c30 (size before relaxing)
- .debug_str     0x0000000000088862      0x300 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
+ .debug_str     0x000000000008885d      0x300 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_cortex.o
                                       0x82c39 (size before relaxing)
- .debug_str     0x0000000000088b62      0x31f Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
+ .debug_str     0x0000000000088b5d      0x324 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_gpio.o
                                       0x82964 (size before relaxing)
  .debug_str     0x0000000000088e81      0x24f Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.o
                                       0x8299d (size before relaxing)

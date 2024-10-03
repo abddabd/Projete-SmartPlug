@@ -243,16 +243,17 @@ int main(void)
 	currentOutputMilis = currentOutput * 1000;
 
 	snprintf(volString, 50, "%1f", voltageOutput);
-	sprintf(temString, "Tensao:%sV", volString);
-	ST7789_WriteString(0, 129, temString, Font_11x18, BLACK, WHITE);
+	sprintf(temString, "Tensao:%13sV", volString);
+	ST7789_WriteString(0, 165, temString, Font_11x18, BLACK, WHITE);
 
 	snprintf(curString, 50, "%1f", currentOutputMilis);
-	sprintf(temString, "Corrente:%smA", curString);
+	sprintf(temString, "Corrente:%10smA", curString);
 	ST7789_WriteString(0, 111, temString, Font_11x18, BLACK, WHITE);
+	ST7789_WriteString(0, 129, "   ", Font_11x18, BLACK, WHITE);
 
 	snprintf(powString, 50, "%1f", powerOutput);
-	sprintf(temString, "Potencia:%sW", powString);
-	ST7789_WriteString(0, 93, temString, Font_11x18, BLACK, WHITE);
+	sprintf(temString, "Potencia:%11sW", powString);
+	ST7789_WriteString(0, 57, temString, Font_11x18, BLACK, WHITE);
 
 	Communicate();
 
